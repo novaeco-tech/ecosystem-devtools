@@ -1,0 +1,44 @@
+name: Publish Development Images
+
+on:
+  push:
+    branches:
+      - main
+  # Allow manual trigger as well
+  workflow_dispatch:
+
+# Grant permissions for the GITHUB_TOKEN to write to GHCR
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Define the images to build. The name (e.g., 'python')
+        # must match the directory name in the repo.
+        image: [python, node]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push dev image
+        uses: docker/build-push-action@v6
+        with:
+          context:./${{ matrix.image }}
+          file:./${{ matrix.image }}/Dockerfile
+          push: true
+          tags: ghcr.io/nova-ecosystem/dev-${{ matrix.image }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
