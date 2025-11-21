@@ -8,7 +8,9 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=on
 
 # Install common system dependencies and dev tools
+# Added ca-certificates so git can verify HTTPS connections
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     git \
     curl \
     bash \
