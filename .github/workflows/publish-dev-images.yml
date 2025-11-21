@@ -4,7 +4,7 @@ name: Publish Development Images
 # This workflow automates the building and publishing of the standardized development
 # container images (base images) used across the Nova Ecosystem.
 #
-# 1. It triggers on pushes to 'main' or manual dispatch.
+# 1. It triggers on pushes to 'main' (specifically changes in 'docker/**') or manual dispatch.
 # 2. It uses a matrix strategy to build 'python' and 'node' images in parallel.
 # 3. It sets up 'Buildx' to enable advanced caching (type=gha).
 # 4. It pushes the final images to: ghcr.io/nova-ecosystem/dev-[language]:latest
@@ -13,6 +13,10 @@ on:
   push:
     branches:
       - main
+    # OPTIMIZATION: Only build when Docker files change
+    paths:
+      - 'docker/**'
+      - '.github/workflows/publish-dev-images.yml'
   # Allow manual trigger as well
   workflow_dispatch:
 
@@ -27,8 +31,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Define the images to build. The name (e.g., 'python')
-        # must match the directory name in the repo.
+        # Define the images to build.
+        # The name (e.g., 'python') must match the directory name in 'docker/'.
         image: [python, node]
 
     steps:
@@ -50,8 +54,8 @@ jobs:
       - name: Build and push dev image
         uses: docker/build-push-action@v6
         with:
-          context: ./${{ matrix.image }}
-          file: ./${{ matrix.image }}/Dockerfile
+          context: ./docker/${{ matrix.image }}
+          file: ./docker/${{ matrix.image }}/Dockerfile
           push: true
           tags: ghcr.io/nova-ecosystem/dev-${{ matrix.image }}:latest
           cache-from: type=gha

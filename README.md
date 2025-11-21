@@ -48,7 +48,7 @@ nova version release minor
 ## 🐳 Shared Docker Images
 
 We maintain standard development images to ensure consistency across all engineers' machines.
-These are automatically built and pushed to GHCR (GitHub Container Registry) whenever `docker/` files change.
+These are automatically built and pushed to GHCR (GitHub Container Registry) whenever the `docker/` directory changes.
 
 | Image | Tag | Description |
 | :--- | :--- | :--- |
@@ -81,4 +81,4 @@ If you want to add new commands to the `nova` tool:
 ### Publishing Updates
 
   * **Docker Images:** Push changes to the `docker/` folder to trigger a rebuild and publish to GHCR.
-  * **Nova CLI:** simply push changes to the `nova-cli/` folder on the `main` branch. Everyone using the "Git Install" method will receive the updates the next time they run the upgrade command or rebuild their DevContainer.
+  * **Nova CLI:** Simply push changes to the `nova-cli/` folder on the `main` branch. Everyone using the "Git Install" method will receive the updates the next time they run the upgrade command or rebuild their DevContainer.
