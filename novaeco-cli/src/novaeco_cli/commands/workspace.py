@@ -101,13 +101,16 @@ def generate_workspace_json(categorized_repos):
     """Generates the .code-workspace JSON file with categorized folders."""
     folders = []
 
-    # Helper to add a list of repos to the folders config
-    def add_group(group_repos):
+    # Helper to add a list of repos to the folders config with a prefix
+    def add_group(category_label, group_repos):
         # Sort alphabetically within the group
         group_repos.sort(key=lambda x: x["name"])
         for r in group_repos:
+            # Prefix the display name (e.g., "SECTOR: novaagro")
+            display_name = f"{category_label.upper()}: {r['name']}"
+            
             folders.append({
-                "name": r["name"],
+                "name": display_name,
                 "path": f"{TARGET_DIR}/{r['name']}"
             })
 
@@ -115,11 +118,11 @@ def generate_workspace_json(categorized_repos):
     for topic in TOPIC_PRIORITY:
         repos = categorized_repos.get(topic, [])
         if repos:
-            add_group(repos)
+            add_group(topic, repos)
 
     # Add uncategorized at the bottom
     if categorized_repos["uncategorized"]:
-        add_group(categorized_repos["uncategorized"])
+        add_group("other", categorized_repos["uncategorized"])
 
     workspace_data = {
         "folders": folders,
