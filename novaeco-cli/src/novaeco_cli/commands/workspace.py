@@ -125,15 +125,15 @@ def generate_workspace_json(categorized_repos):
         "folders": folders,
         "settings": {
             "files.exclude": {
-                "**/.git": true,
-                "**/.svn": true,
-                "**/.hg": true,
-                "**/CVS": true,
-                "**/.DS_Store": true,
-                "**/Thumbs.db": true,
-                "**/node_modules": true,
-                "**/__pycache__": true,
-                "**/.venv": true
+                "**/.git": True,
+                "**/.svn": True,
+                "**/.hg": True,
+                "**/CVS": True,
+                "**/.DS_Store": True,
+                "**/Thumbs.db": True,
+                "**/node_modules": True,
+                "**/__pycache__": True,
+                "**/.venv": True
             },
             "explorer.compactFolders": False
         }
