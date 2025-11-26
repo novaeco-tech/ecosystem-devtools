@@ -2,7 +2,7 @@ name: Publish Development Images
 
 # DESCRIPTION:
 # This workflow automates the building and publishing of the standardized development
-# container images (base images) used across the Nova Ecosystem.
+# container images (base images) used across the NovaEco.
 #
 # 1. It triggers on pushes to 'main' (specifically changes in 'docker/**') or manual dispatch.
 # 2. It uses a matrix strategy to build 'python' and 'node' images in parallel.

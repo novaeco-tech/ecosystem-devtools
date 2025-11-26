@@ -1,3 +1,3 @@
 # Nova CLI
 
-Internal tool for managing versioning and releases across Nova Ecosystem services.
+Internal tool for managing versioning and releases across NovaEco services.
