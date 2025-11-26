@@ -1,11 +1,11 @@
 import argparse
 import sys
-from nova_cli.commands import version, workspace
+from novaeco_cli.commands import version, workspace
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="nova", 
-        description="Nova Ecosystem Developer Tools"
+        prog="novaeco", 
+        description="NovaEco Developer Tools"
     )
     
     subparsers = parser.add_subparsers(dest="main_command", help="Available commands")

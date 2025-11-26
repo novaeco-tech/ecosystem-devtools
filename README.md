@@ -4,7 +4,7 @@ This repository hosts shared developer tooling, Docker images, and scripts used 
 
 ## 🛠️ Nova CLI
 
-The **Nova CLI** (package: `nova-ecosystem-cli`) is our internal Python tool used to manage versioning, releases, and automation across our monorepos and microservices.
+The **Nova CLI** (package: `novaeco-cli`) is our internal Python tool used to manage versioning, releases, and automation across our monorepos and microservices.
 
 ### Installation
 
@@ -12,22 +12,22 @@ Since this is an internal tool, we install it directly from the repository sourc
 
 **1. Install the latest version:**
 ```bash
-# Note: The package is located in the 'nova-cli' subdirectory
-pip install "git+https://github.com/nova-ecosystem/ecosystem-devtools.git@main#subdirectory=nova-cli"
+# Note: The package is located in the 'novaeco-cli' subdirectory
+pip install "git+https://github.com/novaeco-tech/ecosystem-devtools.git@main#subdirectory=novaeco-cli"
 ````
 
 **2. Update to the latest version:**
 If a teammate pushes a fix, run this to update your local machine:
 
 ```bash
-pip install --upgrade "git+https://github.com/nova-ecosystem/ecosystem-devtools.git@main#subdirectory=nova-cli"
+pip install --upgrade "git+https://github.com/novaeco-tech/ecosystem-devtools.git@main#subdirectory=novaeco-cli"
 ```
 
 -----
 
 ## ⚡ Environment Setup (Bootstrap)
 
-New developers can bootstrap the entire Nova Ecosystem environment (cloning all repositories and generating a unified VS Code workspace) using the `nova init` command. This replaces manual cloning and configuration.
+New developers can bootstrap the entire Nova Ecosystem environment (cloning all repositories and generating a unified VS Code workspace) using the `novaeco init` command. This replaces manual cloning and configuration.
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ New developers can bootstrap the entire Nova Ecosystem environment (cloning all 
 Navigate to the folder where you want your project root to be, then run:
 
 ```bash
-nova init
+novaeco init
 ```
 
 This command will:
@@ -92,13 +92,13 @@ These are automatically built and pushed to GHCR (GitHub Container Registry) whe
 
 | Image | Tag | Description |
 | :--- | :--- | :--- |
-| `ghcr.io/nova-ecosystem/dev-python` | `latest` | Python 3.10, Flask, Pytest, and common utilities. |
-| `ghcr.io/nova-ecosystem/dev-node` | `latest` | Node.js 18, npm, and Docusaurus support. |
+| `ghcr.io/novaeco/dev-python` | `latest` | Python 3.10, Flask, Pytest, and common utilities. |
+| `ghcr.io/novaeco/dev-node` | `latest` | Node.js 18, npm, and Docusaurus support. |
 
 **Usage in `devcontainer.json`:**
 
 ```json
-"image": "ghcr.io/nova-ecosystem/dev-python:latest"
+"image": "ghcr.io/novaeco/dev-python:latest"
 ```
 
 -----
@@ -112,7 +112,7 @@ If you want to add new commands to the `nova` tool:
 1.  Clone this repository.
 2.  Install the package in "editable" mode (changes are reflected immediately):
     ```bash
-    cd nova-cli
+    cd novaeco-cli
     pip install -e .
     ```
 3.  Add your new module in `src/nova_cli/commands/`.
@@ -121,4 +121,4 @@ If you want to add new commands to the `nova` tool:
 ### Publishing Updates
 
   * **Docker Images:** Push changes to the `docker/` folder to trigger a rebuild and publish to GHCR.
-  * **Nova CLI:** Simply push changes to the `nova-cli/` folder on the `main` branch. Everyone using the "Git Install" method will receive the updates the next time they run the upgrade command or rebuild their DevContainer.
+  * **Nova CLI:** Simply push changes to the `novaeco-cli/` folder on the `main` branch. Everyone using the "Git Install" method will receive the updates the next time they run the upgrade command or rebuild their DevContainer.

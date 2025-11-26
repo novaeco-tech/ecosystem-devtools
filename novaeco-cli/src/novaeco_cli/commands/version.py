@@ -19,11 +19,11 @@ def register_subcommand(subparsers):
     # Define the examples to show in the help output
     examples = """Examples:
   # Patch a specific service (bug fix)
-  nova version patch api
+  novaeco version patch api
   
   # Create a new release (feature)
-  nova version release minor
-  nova version release major
+  novaeco version release minor
+  novaeco version release major
 """
 
     parser = subparsers.add_parser(
@@ -36,11 +36,11 @@ def register_subcommand(subparsers):
     # Add sub-actions for 'version'
     v_subs = parser.add_subparsers(dest="version_command", required=True)
     
-    # Command: nova version patch <service>
+    # Command: novaeco version patch <service>
     p_patch = v_subs.add_parser("patch", help="Bump patch version (e.g., 1.0.0 -> 1.0.1)")
     p_patch.add_argument("service", help="Service name (api, auth, app, website)")
     
-    # Command: nova version release <type>
+    # Command: novaeco version release <type>
     p_release = v_subs.add_parser("release", help="Bump Global Major/Minor version (aligns all services)")
     p_release.add_argument("type", choices=["minor", "major"], help="Type of release")
 
