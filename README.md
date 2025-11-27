@@ -1,6 +1,8 @@
-# NovaEco DevTools
+# 🌍 NovaEco DevTools
 
-This repository hosts shared developer tooling, Docker images, and scripts used across the NovaEco organization.
+**NovaEco** is the open‑source **Digital Public Infrastructure** for the circular economy.
+
+This repository hosts shared developer tooling, Docker images, and scripts used to build the NovaEco **System-of-Systems**.
 
 ## 🛠️ NovaEco CLI
 
