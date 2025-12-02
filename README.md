@@ -55,7 +55,7 @@ New developers can bootstrap the entire NovaEco environment (cloning all reposit
 
 ### Prerequisites
 
-1.  **Python 3.10+**
+1.  **Python 3.11+**
 2.  **Git**
 3.  **GitHub CLI (`gh`)** — [Installation Guide](https://cli.github.com/)
       * *Note: You must run `gh auth login` to authenticate before initializing the environment.*
@@ -72,7 +72,13 @@ novaeco init
 This command will:
 
 1.  Query the `novaeco-tech` GitHub organization.
-2.  Dynamically sort repositories based on their topics (`ecosystem`, `enabler`, `sector`, etc.).
+2.  Dynamically sort repositories based on the architecture topics:
+      * **Meta** (`.github`)
+      * **Ecosystem** (`core`, `devtools`)
+      * **Enablers** (e.g., `novatrade`, `novamind`)
+      * **Sectors** (e.g., `novaagro`, `novanature`)
+      * **Workers** (e.g., `worker-bioacoustics`)
+      * **Products** (e.g., `product-novalab`)
 3.  Clone all missing repositories into a `./repos` directory.
 4.  Generate a `novaeco.code-workspace` file configured with the correct folder structure.
 
@@ -90,12 +96,17 @@ code novaeco.code-workspace
 Once your environment is set up, use the CLI to manage service versions.
 
 **1. Patching a Service**
-Used when fixing bugs. Increments the patch version (e.g., `1.0.0` -\> `1.0.1`) for a specific service.
+Used when fixing bugs. Increments the patch version (e.g., `1.0.0` -\> `1.0.1`).
 
 ```bash
 # Syntax: novaeco version patch <service_name>
-novaeco version patch auth
+
+# For Monorepos (Enablers/Sectors):
 novaeco version patch api
+novaeco version patch auth
+
+# For Workers (Root-level versioning):
+novaeco version patch worker
 ```
 
 **2. Creating a Release**
@@ -116,8 +127,8 @@ These are automatically built and pushed to GHCR (GitHub Container Registry) whe
 
 | Image | Tag | Description |
 | :--- | :--- | :--- |
-| `ghcr.io/novaeco/dev-python` | `latest` | Python 3.10, Flask, Pytest, and common utilities. |
-| `ghcr.io/novaeco/dev-node` | `latest` | Node.js 18, npm, and Docusaurus support. |
+| `ghcr.io/novaeco/dev-python` | `latest` | **Python 3.11**, Flask, Pytest, and `protobuf-compiler` (for gRPC). |
+| `ghcr.io/novaeco/dev-node` | `latest` | **Node.js 20**, npm, and Docusaurus support. |
 
 **Usage in `devcontainer.json`:**
 

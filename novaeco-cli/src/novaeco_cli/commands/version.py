@@ -9,8 +9,9 @@ SERVICE_TYPES = {
     "auth": {"path": "auth/VERSION", "type": "text"},
     "app": {"path": "app/VERSION", "type": "text"},
     "website": {"path": "website/package.json", "type": "json"},
+    "worker": {"path": "VERSION", "type": "text"},
 }
-
+    
 GLOBAL_FILE = "GLOBAL_VERSION"
 
 def register_subcommand(subparsers):

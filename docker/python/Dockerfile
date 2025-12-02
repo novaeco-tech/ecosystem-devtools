@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     bash \
     zsh \
+    protobuf-compiler \
     # Add any other common, system-level tools your team needs
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
