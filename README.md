@@ -16,7 +16,7 @@ You do not need to configure a private registry.
 **1. Install the latest version:**
 ```bash
 # Note: The package is located in the 'novaeco-cli' subdirectory
-pip install "git+https://github.com/novaeco-tech/ecosystem-devtools.git@main#subdirectory=novaeco-cli"
+pip install "git+https://github.com/novaeco-tech/novaeco-devtools.git@main#subdirectory=novaeco-cli"
 ````
 
 **2. Configure your PATH (Important):**
@@ -44,7 +44,7 @@ source ~/.bashrc
 If a teammate pushes a fix, run this to update your local machine:
 
 ```bash
-pip install --upgrade "git+https://github.com/novaeco-tech/ecosystem-devtools.git@main#subdirectory=novaeco-cli"
+pip install --upgrade "git+https://github.com/novaeco-tech/novaeco-devtools.git@main#subdirectory=novaeco-cli"
 ```
 
 -----
@@ -74,7 +74,9 @@ This command will:
 1.  Query the `novaeco-tech` GitHub organization.
 2.  Dynamically sort repositories based on the architecture topics:
       * **Meta** (`.github`)
-      * **Ecosystem** (`core`, `devtools`)
+      * **Core** (`novaeco`)
+      * **Tooling** (`devtools`)
+      * **Governance** (`novaeco-qa`, `novaeco-releases`)
       * **Enablers** (e.g., `novatrade`, `novamind`)
       * **Sectors** (e.g., `novaagro`, `novanature`)
       * **Workers** (e.g., `worker-bioacoustics`)
